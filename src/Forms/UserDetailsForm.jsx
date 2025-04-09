@@ -87,11 +87,14 @@ function UserDetailsForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:3001/userdetails", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
+    await fetch(
+      "https://itsm-tool-backend-production.up.railway.app/userdetails",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      }
+    );
     alert("User details submitted!");
   };
 
