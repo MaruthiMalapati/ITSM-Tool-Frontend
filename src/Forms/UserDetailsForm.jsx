@@ -114,7 +114,7 @@ function UserDetailsForm() {
             <input name="email" type="email" onChange={handleChange} required />
           </div>
         </div>
-
+        {/* 
         <div className="input-row">
           <div className="input-group">
             <label>Phone</label>
@@ -159,7 +159,7 @@ function UserDetailsForm() {
               required
             />
           </div>
-        </div>
+        </div> */}
 
         <button type="submit" className="animated-button">
           Submit
