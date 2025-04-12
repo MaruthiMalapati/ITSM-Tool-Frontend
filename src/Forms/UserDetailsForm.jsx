@@ -85,17 +85,39 @@ function UserDetailsForm() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   await fetch(
+  //     "https://itsm-tool-backend-production.up.railway.app/userdetails",
+  //     {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(formData),
+  //     }
+  //   );
+  //   alert("User details submitted!");
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch(
-      "https://itsm-tool-backend-production.up.railway.app/userdetails",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+    console.log("Sending form data:", formData);
+    try {
+      const response = await fetch(
+        "https://itsm-tool-backend-production.up.railway.app/userdetails",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.error || "Unknown error");
       }
-    );
-    alert("User details submitted!");
+      alert("User details submitted!");
+    } catch (err) {
+      alert("Error: " + err.message);
+    }
   };
 
   return (
